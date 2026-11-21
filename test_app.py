@@ -19,7 +19,7 @@ def test_2_ongkir_pembulatan_ke_atas():
     """Test 2 (Aturan Bisnis 1): Berat 1.2 kg dibulatkan ke atas jadi 2 kg x tarif zona"""
     ongkir, berat_bulat, _ = hitung_ongkir(1.2, 10, 10, 10, "JATIM_DEKAT")
     assert berat_bulat == 2
-    assert ongkir == 99999
+    assert ongkir == 20000
 
 def test_3_ongkir_berat_volumetrik_lebih_besar():
     """Test 3 (Aturan Bisnis 1): Berat volumetrik (60x40x30/6000 = 12 kg) > berat asli (2 kg)"""
@@ -32,8 +32,8 @@ def test_4_format_resi_kc_unik():
     """Test 4 (Aturan Bisnis 2): Format resi KC + tanggal 8 digit + 6 digit urut & unik"""
     r1 = generate_resi(1, "20261120")
     r2 = generate_resi(2, "20261120")
-    assert r1 == "KC20261199999001"
-    assert r2 == "KC20261199999002"
+    assert r1 == "KC20261120000001"
+    assert r2 == "KC20261120000002"
     assert r1 != r2
 
 def test_5_status_hanya_maju_tolak_lompat_dan_mundur():
