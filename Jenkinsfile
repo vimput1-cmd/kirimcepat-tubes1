@@ -52,11 +52,10 @@ pipeline {
             steps {
                 bat '''
                     @echo off
-                    set "PATH=C:\\Docker;%PATH%"
+                    set "PATH=C:\\Docker;C:\\Users\\AXIOO\\AppData\\Local\\Programs\\DockerDesktop\\resources\\bin;%PATH%"
                     set "DOCKER_HOST=tcp://localhost:2375"
                     if not exist .env copy .env.example .env
-                    docker compose pull app
-                    docker compose up -d
+                    docker compose up -d 2>nul || docker start kirimcepat-db kirimcepat-app
                 '''
             }
         }
@@ -65,8 +64,8 @@ pipeline {
             steps {
                 bat '''
                     @echo off
-                    timeout /t 10 /nobreak > nul
-                    curl -fsS http://localhost:8000/health
+                    timeout /t 5 /nobreak > nul
+                    curl.exe -fsS http://localhost:8000/health
                 '''
             }
         }
